@@ -1,0 +1,28 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "express_ejs_mongodb+authenticate+uploadfile+hashcode+git",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leduckhuong/practice.git"
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "mongodb",
+    "authenticate",
+    "uploadfile",
+    "hashcode",
+    "git"
+  ],
+  "author": "leduckhuong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leduckhuong/practice/issues"
+  },
+  "homepage": "https://github.com/leduckhuong/practice#readme"
+}
