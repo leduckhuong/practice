@@ -5,15 +5,13 @@ class Login {
         res.render('partials/authentication/login');
     }
     login(req, res, next) {
-        const password = CryptoJS.AES.encrypt(req.body.password, process.env.CRYPTO_KEY).toString();
-        const data = {
-            ...req.body,
-            password
-        }
-        const user = new User(data);
-        user.save()
-            .then(() => {
-                res.send(password);
+        User.findOne({account: req.body.account})
+            .then(user => {
+                const cipher = user.password.toString();
+                const bytes = CryptoJS.AES.decrypt(cipher, process.env.SECRET_KEY);
+                const password = bytes.toString(CryptoJS.enc.Utf8);
+                if(req.body.password === password) 
+                res.send(password)
             })
             .catch(err => next(err))
     }

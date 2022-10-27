@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER</title>
+    <link rel="icon" type="image/gif" href="/images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/register_login.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app">
+        <form class="form" method="post" id="register-form">
+            <div class="form__header">
+                <h2 class="mr-auto">Đăng ký</h2>
+                <a href="/login" class="nav-link">
+                    <h2>Đăng nhập</h2>
+                </a>
+            </div>
+            <div class="form-group">
+              <label for="account">Tên đăng nhập</label>
+              <input type="text" name="account" class="form-control" id="account" placeholder="Nhập tài khoản">
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="password">Mật khẩu</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="verify">Nhập lại mật khẩu</label>
+                <input type="password" class="form-control" id="verify" placeholder="Nhập lại mật khẩu">
+                <span class="form-message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Đăng ký</button>
+        </form>
+    </div>
+    <script src="/js/form.js"></script>
+    <script>
+        const registerForm = new Validator(
+            '#register-form',
+            '.form-group',
+            '.form-message',
+            [
+                Validator.Required('input[name="account"]', 'Nhập tài khoản muốn đăng ký!'),
+                Validator.Required('input[name="password"]', 'Nhập mật khẩu!'),
+                Validator.MinLength('input[name="password"]', 6, 'Nhập vào tối thiểu 6 ký tự'),
+                Validator.Required('input[id="verify"]', 'Nhập lại mật khẩu!'),
+                Validator.Confirmed('input[id="verify"]',() => {
+                    return $('input[name="password"]').val();
+                }, 'Mật khẩu không khớp!'),
+            ]
+        );
+        registerForm.start();
+    </script>
+</body>
+</html>
