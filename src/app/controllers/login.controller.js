@@ -10,10 +10,21 @@ class Login {
                 const cipher = user.password.toString();
                 const bytes = CryptoJS.AES.decrypt(cipher, process.env.SECRET_KEY);
                 const password = bytes.toString(CryptoJS.enc.Utf8);
-                if(req.body.password === password) 
-                res.send(password)
+                if(req.body.password === password) {
+                    res.render('index', {
+                        user
+                    })
+                } else {
+                    res.render('partials/authentication/login', {
+                        fail:'error'
+                    })
+                };
             })
-            .catch(err => next(err))
+            .catch(() => {
+                res.render('partials/authentication/login', {
+                    fail:'error'
+                })
+            })
     }
 }
 module.exports = new Login();

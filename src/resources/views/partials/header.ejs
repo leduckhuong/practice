@@ -1,8 +1,32 @@
 <header>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand">Navbar</a>
-        <a href="/login" class="nav-link text-info">Login
-            <i class="fa-regular fa-user"></i>
-        </a>
+        <%if(typeof user == 'object' && user){%> 
+        <a href="/user?user=<%= user._id %>" class="nav-link text-info">
+            <%= user.name %> 
+        <%}else{%>
+        <a href="/login" class="nav-link text-info">Login <%}%></a>
       </nav>
+</header>
+<header class="header fixed-top">
+    <nav class="header__nav navbar navbar-expand navbar-light bg-light navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="header-user nav-item active">
+                    <%if(typeof user == 'object' && user){%>
+                    <a href="/user/<%= user._id %>" class="nav-link header-user__profile d-flex"><%= user.name %> 
+                        <div class="header-user__img ml-2 rounded-circle border"  style="background-image: url('<%= user.avatar %>')"></div>
+                    <%}else if(typeof isLogin == 'boolean' && isLogin){%>
+                    <a class="nav-link header-user__profile d-flex">User
+                        <div class="header-user__img ml-2 rounded-circle border"></div>
+                    </a>
+                    <%}else{%>
+                    <a href="/login" class="nav-link header-user__profile d-flex">Login
+                        <div class="header-user__img ml-2 rounded-circle border"></div>
+                    <%}%></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>

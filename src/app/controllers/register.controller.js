@@ -12,8 +12,10 @@ class Register {
         }
         const user = new User(data);
         user.save()
-            .then((data) => {
-                res.send(data);
+            .then((user) => {
+                res.render('index', {
+                    user
+                })
             })
             .catch(err => next(err))
     }
