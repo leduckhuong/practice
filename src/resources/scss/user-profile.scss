@@ -1,0 +1,17 @@
+input[name="avatar"]{
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0; // active cursor pointer
+}
+img.user-avatar {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}

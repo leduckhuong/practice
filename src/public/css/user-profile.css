@@ -1,1 +1,1 @@
-.header{background-color:#eee;box-shadow:1px 2px 4px rgba(0,0,0,.3)}.header .header__nav{height:56px}.header .header-user .header-user__img{height:28px;width:28px;background-position:center center;background-size:cover;background-repeat:no-repeat;background-image:url("/images/user-default.png")}
+input[name=avatar]{outline:none;border:none;position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;cursor:pointer;font-size:0}img.user-avatar{width:160px;height:160px;object-fit:cover}

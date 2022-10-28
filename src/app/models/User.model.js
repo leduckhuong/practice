@@ -6,7 +6,7 @@ const User = new Schema ({
     account: { type: String, required: true , unique: true },
     password: { type: String, required: true },
     name: { type: String, default: 'user' },
-    birthday: { type: Date, default: '01/01/2000' },
+    birthday: { type: Date, default: '2000-01-01' },
     phone: { type: String, default: 'no' },
     avatar: { type: String, default: '/images/user-default.png' }
 }, {
