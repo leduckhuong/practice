@@ -1,30 +1,29 @@
-const User = require('../models/User.model');
+const UserModel = require('../models/User.model');
 const CryptoJS = require("crypto-js");
 class Login {
+    // [GET] /login
     index(req, res, next) {
-        res.render('partials/authentication/login');
+        let userAccount = req.cookies['user-account'];
+        res.render('partials/authentication/login', {
+            userAccount
+        });
     }
-    login(req, res, next) {
-        User.findOne({account: req.body.account})
-            .then(user => {
-                const cipher = user.password.toString();
-                const bytes = CryptoJS.AES.decrypt(cipher, process.env.SECRET_KEY);
-                const password = bytes.toString(CryptoJS.enc.Utf8);
-                if(req.body.password === password) {
-                    res.render('index', {
-                        user
-                    })
-                } else {
-                    res.render('partials/authentication/login', {
-                        fail:'error'
-                    })
-                };
+    // [POST] /login
+    register(req, res, next) {
+        const password = CryptoJS.AES.encrypt(req.body.password, process.env.SECRET_KEY).toString();
+        const data = {
+            ...req.body,
+            password
+        }
+        const user = new UserModel(data);
+        user.save()
+            .then(() => {
+                res.cookie('user-account',req.body.account, {
+                    expires: new Date(Date.now() + 3*60000)
+                });
+                res.redirect('/login')
             })
-            .catch(() => {
-                res.render('partials/authentication/login', {
-                    fail:'error'
-                })
-            })
+            .catch(err => next(err))
     }
 }
 module.exports = new Login();

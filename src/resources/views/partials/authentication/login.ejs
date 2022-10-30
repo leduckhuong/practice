@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="app">
-        <form class="form" id="login-form" method="post">
+        <form class="form" id="login-form" method="post" action="/user">
             <div class="form__header">
                 <h2 class="mr-auto">Đăng nhập</h2>
                 <a href="/register" class="nav-link">
@@ -23,7 +23,7 @@
             </div>
             <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">
               <label for="account">Tài khoản</label>
-              <input type="text" name="account" class="form-control" id="account" placeholder="Nhập tài khoản">
+              <input type="text" name="account" class="form-control" id="account" placeholder="Nhập tài khoản" value="<%if(typeof userAccount == 'string' && userAccount){%><%=userAccount%><%}%>">
               <span class="form-message">Tài khoản hoặc mật khẩu không chính xác!</span>
             </div>
             <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">

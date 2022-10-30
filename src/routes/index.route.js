@@ -6,7 +6,7 @@ module.exports = function route(app) {
     app.use('/user', user);
     app.use('/login', login);
     app.use('/register', register);
-    app.get('/', (req, res) => {
+    app.get('/',(req, res) => {
         res.render('index');
     })
 }
