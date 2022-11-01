@@ -2,30 +2,41 @@
     height: 100vh;
     padding-top: 100px; 
     background-image: linear-gradient(to bottom  right, #98cbe4, #beeb9d);
-    .form {
+    .login{
         width: 500px; 
         margin: 0 auto; 
         padding: 24px; 
         background-color: #fff;
-        .form__header {
-            display: flex;
+        .firebase {
+            text-align: center;
+            button {
+                border: none;
+                outline: none;
+                margin-top: 4px;
+            }
+            img {
+                width: 160px;
+            }
         }
+    }
+    .form__header {
+        display: flex;
+    }
+    .form-control {
+        box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-message {
+        color: rgba(255, 0, 0, 0.849);
+        font-size: 14px;
+        display: none;
+    }
+    .form-group.error {
         .form-control {
-            box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+            background-color: rgba(234, 149, 149, 0.6);
+            border: 1px solid rgba(207, 38, 38, 0.911);
         }
         .form-message {
-            color: rgba(255, 0, 0, 0.849);
-            font-size: 14px;
-            display: none;
-        }
-        .form-group.error {
-            .form-control {
-                background-color: rgba(234, 149, 149, 0.6);
-                border: 1px solid rgba(207, 38, 38, 0.911);
-            }
-            .form-message {
-                display: block;
-            }
+            display: block;
         }
     }
 }

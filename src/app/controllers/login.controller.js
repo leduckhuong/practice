@@ -1,5 +1,6 @@
-const UserModel = require('../models/User.model');
 const CryptoJS = require("crypto-js");
+const UserModel = require('../models/User.model');
+const { getAuth, createUserWithEmailAndPassword } = require('firebase/auth');
 class Login {
     // [GET] /login
     index(req, res, next) {

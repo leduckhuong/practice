@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --inspect ./src/index.js",
-    "sass": "sass --watch --style=compressed --no-source-map src/resources/scss/user-profile.scss:src/public/css/user-profile.css",
+    "sass": "sass --watch --style=compressed --no-source-map src/resources/scss/register-login.scss:src/public/css/register-login.css",
     "tsc": "tsc"
   },
   "repository": {
@@ -34,6 +34,8 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "firebase": "^9.13.0",
+    "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mongoose": "^6.7.0",
     "mongoose-delete": "^0.5.4",

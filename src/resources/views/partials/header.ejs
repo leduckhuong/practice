@@ -3,14 +3,33 @@
         <a class="navbar-brand" href="/">Navbar</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="header-user nav-item active dropdown">
+                <li class="header-user nav-item active">
                     <%if(typeof isUser === 'boolean' && isUser){%>
-                    <a href="/user/<%= user._id %>" class="nav-link header-user__profile d-flex "><%= user.name %> 
-                    <div class="header-user__img ml-2 rounded-circle border"  style="background-image: url('<%= user.avatar %>')"></div>
+                    <a href="/user/<%= user._id %>" class="nav-link header-user__profile d-flex"><%= user.name %> 
+                        <div class="header-user__img ml-2 rounded-circle border"  style="background-image: url('<%= user.avatar %>')"></div>
                     <%}else{%>
                     <a href="/login" class="nav-link header-user__profile d-flex">Login
                         <div class="header-user__img ml-2 rounded-circle border"></div>
                     <%}%></a>
+                </li>
+                <li class="nav-item">
+                    <%if(typeof isUser === 'boolean' && isUser){%>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <form method="post" action="/">
+                                <button class="dropdown-item" type="submit">Đăng xuất</button>
+                            </form>
+                        </div>
+                    </div>
+                    <%}else{%>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="/register">Đăng ký</a>
+                        </div>
+                    </div>
+                    <%}%>
                 </li>
             </ul>
         </div>

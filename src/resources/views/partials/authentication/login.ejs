@@ -14,25 +14,39 @@
 </head>
 <body>
     <div class="app">
-        <form class="form" id="login-form" method="post" action="/user">
-            <div class="form__header">
-                <h2 class="mr-auto">Đăng nhập</h2>
-                <a href="/register" class="nav-link">
-                    <h2>Đăng ký</h2>
-                </a>
+        <div class="login">
+            <form class="form" id="login-form" method="post" action="/verify/processing-login">
+                <div class="form__header">
+                    <h2 class="mr-auto">Đăng nhập</h2>
+                    <a href="/register" class="nav-link">
+                        <h2>Đăng ký</h2>
+                    </a>
+                </div>
+                <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">
+                  <label for="account">Tài khoản</label>
+                  <input type="text" name="account" class="form-control" id="account" placeholder="Nhập tài khoản" value="<%if(typeof userAccount == 'string' && userAccount){%><%=userAccount%><%}%>">
+                  <span class="form-message">Tài khoản hoặc mật khẩu không chính xác!</span>
+                </div>
+                <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">
+                  <label for="password">Mật khẩu</label>
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                  <span class="form-message"></span>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Đăng nhập</button>
+            </form>
+            <div class="firebase">
+                <div class="google">
+                    <button type="button">
+                        <img src="/images/firebase-google.png" alt="google">
+                    </button>
+                </div>
+                <div class="facebook">
+                    <button type="button">
+                        <img src="/images/firebase-facebook.png" alt="facebook">
+                    </button>
+                </div>
             </div>
-            <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">
-              <label for="account">Tài khoản</label>
-              <input type="text" name="account" class="form-control" id="account" placeholder="Nhập tài khoản" value="<%if(typeof userAccount == 'string' && userAccount){%><%=userAccount%><%}%>">
-              <span class="form-message">Tài khoản hoặc mật khẩu không chính xác!</span>
-            </div>
-            <div class="form-group<%if(typeof fail == 'string' && fail){%> error<%}%>">
-              <label for="password">Mật khẩu</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
-              <span class="form-message"></span>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4">Đăng nhập</button>
-        </form>
+        </div>
     </div>
     <script src="/js/form.js"></script>
     <script>
